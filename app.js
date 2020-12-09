@@ -13,7 +13,7 @@ const outputPath = path.join(OUTPUT_DIR, "team.html");
 
 const render = require("./lib/htmlRenderer");
 
-let employees = [];
+let employeesArr = [];
 let id = 0
 
 function inputEmp () {
@@ -69,8 +69,8 @@ function inputEmp () {
                         default:
                             break;
                     }
-                    employees.push(employee);
-                    console.log(employees);
+                    employeesArr.push(employee);
+                    console.log(employeesArr);
                 })
                 .catch((error) => {
                     if (error) {console.log("You've encountered an error")}
@@ -79,19 +79,6 @@ function inputEmp () {
 };
 
 inputEmp();
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
