@@ -21,7 +21,18 @@ function inputEmp () {
     inquirer
         .prompt(promptQs)
         .then((res) => {
-            console.log("done")
+            console.log(res);
+            let empRelatedQuestion = "";
+            let empName = "";
+            let empEmail = "";
+            let empTitle = "";
+
+            if (res.jobTitleInput === "Manager"){
+                empRelatedQuestion = "What is your office number?";
+                empName = res.nameInput;
+                empEmail = res.emailInput;
+                empTitle = res.titleInput;
+            }
         })
 }
 
