@@ -22,24 +22,61 @@ function inputEmp () {
         .prompt(promptQs)
         .then((res) => {
             console.log(res);
-            let empRelatedQuestion = "";
+            let titleRelatedQuestion = "";
             let empName = "";
             let empEmail = "";
             let empTitle = "";
+            let empTitles = "";
 
-            if (res.jobTitleInput === "Manager"){
-                empRelatedQuestion = "What is your office number?";
+            if (res.titleInput === "Manager"){
+                titleRelatedQuestion = "What is your office number?";
                 empName = res.nameInput;
                 empEmail = res.emailInput;
                 empTitle = res.titleInput;
-            } else if (res.jobTitleInput === "Intern"){
-                empRelatedQuestion = "What school do you go to?";
+            } else if (res.titleInput === "Intern"){
+                titleRelatedQuestion = "What school do you go to?";
                 empName = res.nameInput;
                 empEmail = res.emailInput;
                 empTitle = res.titleInput;
-            }
-        })
-}
+            } else if (res.titleInput === "Engineer"){
+                titleRelatedQuestion = "What is your Github username?";
+                empName = res.nameInput;
+                empEmail = res.emailInput;
+                empTitle = res.titleInput;
+            };
+            inquirer
+                .prompt([
+                    {
+                        name: "titlesInput",
+                        type: "input",
+                        message: titleRelatedQuestion
+                    }
+                ])
+                .then((res2) => {
+                    console.log(res2);
+                    empTitles = res2.titlesInput;
+                
+                    switch (empTitle) {
+                        case "Engineer":
+                            employee = new Engineer (empName, id, empEmail, empTitles)
+                            break;
+                        case "Manager":
+                            employee = new Manager (empName, id, empEmail, empTitles)
+                            break;
+                        case "Intern":
+                            employee = new Intern (empName, id, empEmail, empTitles)
+                            break;
+                        default:
+                            break;
+                    }
+                    employees.push(employee);
+                    console.log(employees);
+                })
+                .catch((error) => {
+                    if (error) {console.log("You've encountered an error")}
+                });
+        });
+};
 
 inputEmp();
 
