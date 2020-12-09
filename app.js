@@ -32,6 +32,11 @@ function inputEmp () {
                 empName = res.nameInput;
                 empEmail = res.emailInput;
                 empTitle = res.titleInput;
+            } else if (res.jobTitleInput === "Intern"){
+                empRelatedQuestion = "What school do you go to?";
+                empName = res.nameInput;
+                empEmail = res.emailInput;
+                empTitle = res.titleInput;
             }
         })
 }
