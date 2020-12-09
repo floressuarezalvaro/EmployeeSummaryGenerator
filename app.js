@@ -20,7 +20,9 @@ function inputEmp () {
     id ++;
     inquirer
         .prompt(promptQs)
-        .then(console.log("Hello"))
+        .then((res) => {
+            console.log("done")
+        })
 }
 
 inputEmp();
